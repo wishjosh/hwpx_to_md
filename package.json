@@ -1,0 +1,19 @@
+{
+  "name": "hwpx-to-md",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.11",
+    "vite-plugin-singlefile": "^2.0.1"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "marked": "^18.0.4"
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>doc2md — HWPX를 Markdown으로 변환</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- 상단 안내 -->
+  <div class="notice" id="hwpxNotice">
+    <span>HWP 파일은 먼저 HWPX로 변환 필요</span>
+    <a href="https://www.polarisofficetools.com/hwpx/convert/hwp" target="_blank" rel="noopener">
+      HWP → HWPX 변환
+    </a>
+  </div>
+
+  <!-- 문서 유형 선택 -->
+  <div class="doc-type">
+    <label for="docType">문서 유형</label>
+    <select id="docType">
+      <option value="eopmu">업무보고</option>
+      <option value="gibon">기본연구</option>
+      <option value="jeongchaek">정책·수시연구</option>
+      <option value="brief">정책브리프</option>
+    </select>
+  </div>
+
+  <!-- 메인 -->
+  <div class="main">
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-zone-icon">📄</div>
+      <div class="drop-zone-text">
+        HWPX 파일을 여기에 끌어놓거나<br>아래 버튼으로 선택하세요
+      </div>
+      <div class="drop-zone-sub">문서 유형을 먼저 선택한 후 파일을 업로드하세요</div>
+      <button class="select-btn" id="selectBtn">파일 선택</button>
+    </div>
+    <input type="file" id="fileInput" accept=".hwpx,.hwp">
+
+    <div class="status" id="status"></div>
+
+    <div class="result" id="result">
+      <div class="result-actions">
+        <button class="btn-download" id="downloadBtn">📥 다운로드</button>
+        <button class="btn-copy" id="copyBtn">📋 클립보드 복사</button>
+        <button class="btn-reset" id="resetBtn">↩ 초기화</button>
+      </div>
+      
+      <!-- 프리뷰 탭 -->
+      <div class="editor-header">
+        <div class="preview-tabs">
+          <button class="tab-btn active" data-tab="raw">📝 에디터</button>
+          <button class="tab-btn" data-tab="rendered">👁️ 프리뷰 (HTML)</button>
+          <button class="tab-btn" data-tab="split">📊 나란히 보기</button>
+        </div>
+        <div class="stats-badge" id="statsBadge">0자 (0단어)</div>
+      </div>
+
+      <!-- 프리뷰 영역 -->
+      <div class="preview-content" id="previewContent">
+        <div class="preview-pane active" id="paneRaw">
+          <textarea class="preview-editor" id="previewEditor" placeholder="여기에 마크다운을 직접 입력하거나 수정해보세요..."></textarea>
+        </div>
+        <div class="preview-pane" id="paneRendered">
+          <div class="preview-rendered" id="previewRendered"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">doc2md — 연구원 보고서 HWPX를 Markdown으로 변환</div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

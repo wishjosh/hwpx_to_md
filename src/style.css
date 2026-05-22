@@ -1,0 +1,644 @@
+/* ===================================================================
+   Design System & Theme Variables (Premium HSL & Glassmorphism)
+   =================================================================== */
+:root {
+  --bg-app: hsl(220, 25%, 97%);
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --primary: hsl(243, 75%, 59%);
+  --primary-hover: hsl(243, 75%, 52%);
+  --primary-light: hsl(243, 100%, 96%);
+  --primary-glow: rgba(79, 70, 229, 0.15);
+  
+  --success: hsl(150, 84%, 37%);
+  --success-bg: hsl(150, 80%, 95%);
+  --error: hsl(0, 84%, 60%);
+  --error-bg: hsl(0, 86%, 97%);
+  --warning: hsl(40, 95%, 45%);
+  --warning-bg: hsl(45, 100%, 95%);
+  
+  --text-main: hsl(224, 71%, 4%);
+  --text-body: hsl(220, 15%, 25%);
+  --text-muted: hsl(220, 10%, 46%);
+  
+  --border-color: hsl(220, 13%, 91%);
+  --border-focus: hsl(243, 75%, 75%);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 24px 50px rgba(31, 38, 135, 0.08);
+  
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --glass-blur: 16px;
+  
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================================================================
+   Base & Typography
+   =================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans KR', 'Pretendard', sans-serif;
+  background: var(--bg-app);
+  color: var(--text-body);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, hsla(243,75%,59%,0.04) 50%, transparent 100%),
+    radial-gradient(at 100% 100%, hsla(339,49%,30%,0) 0, hsla(243,75%,59%,0.03) 50%, transparent 100%);
+  background-attachment: fixed;
+}
+
+/* ===================================================================
+   App Container & Glassmorphism Card
+   =================================================================== */
+.container {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 580px;
+  overflow: hidden;
+  transition: max-width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.container.expanded {
+  max-width: 1280px;
+}
+
+/* ===================================================================
+   Notice Bar
+   =================================================================== */
+.notice {
+  background: var(--warning-bg);
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.notice span {
+  color: var(--warning);
+  font-weight: 500;
+}
+
+.notice a {
+  background: var(--warning);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
+}
+
+.notice a:hover {
+  background: hsl(40, 95%, 40%);
+  transform: translateY(-1px);
+}
+
+/* ===================================================================
+   Document Type Selector
+   =================================================================== */
+.doc-type {
+  padding: 24px 28px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.doc-type label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.doc-type select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  background: #fff;
+  color: var(--text-main);
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='hsl(220, 10%, 46%)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+.doc-type select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* ===================================================================
+   Main Zone & File Upload
+   =================================================================== */
+.main {
+  padding: 16px 28px 32px;
+}
+
+.drop-zone {
+  border: 2px dashed hsl(220, 13%, 80%);
+  border-radius: var(--radius-md);
+  padding: 44px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.drop-zone:hover {
+  border-color: var(--primary);
+  background: rgba(243, 244, 246, 0.8);
+}
+
+.drop-zone.dragover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: scale(0.99);
+}
+
+.drop-zone-icon {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  transition: var(--transition-smooth);
+}
+
+.drop-zone:hover .drop-zone-icon {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.drop-zone-text {
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.drop-zone-sub {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.select-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 36px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.select-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* ===================================================================
+   Status Box
+   =================================================================== */
+.status {
+  margin-top: 20px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 500;
+  display: none;
+  box-shadow: var(--shadow-sm);
+  animation: slideUp 0.3s ease-out;
+}
+
+.status.error {
+  display: block;
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+}
+
+.status.loading {
+  display: block;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+.status.success {
+  display: block;
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+/* ===================================================================
+   Result Area & Action Buttons
+   =================================================================== */
+.result {
+  margin-top: 24px;
+  display: none;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.result.show {
+  display: block;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.result-actions button {
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.btn-download {
+  background: var(--success);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.btn-download:hover {
+  background: hsl(150, 84%, 32%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(16, 185, 129, 0.3);
+}
+
+.btn-copy {
+  background: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-copy:hover {
+  background: hsl(220, 25%, 95%);
+  transform: translateY(-1px);
+}
+
+.btn-reset {
+  background: #fff;
+  color: var(--error);
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  box-shadow: var(--shadow-sm);
+  margin-left: auto;
+}
+
+.btn-reset:hover {
+  background: var(--error-bg);
+  transform: translateY(-1px);
+}
+
+/* ===================================================================
+   Tabs Header & Word Counter
+   =================================================================== */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border-color);
+  margin-top: 16px;
+  padding-bottom: 0px;
+  gap: 16px;
+}
+
+.preview-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: -2px;
+}
+
+.tab-btn {
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.stats-badge {
+  font-family: 'Outfit', sans-serif;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===================================================================
+   Preview Area & Split Layouts
+   =================================================================== */
+.preview-content {
+  margin-top: 20px;
+  position: relative;
+  min-height: 520px;
+}
+
+.preview-pane {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.preview-pane.active {
+  display: block;
+}
+
+/* Split-Mode Grid styling */
+.preview-content.split-mode {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.preview-content.split-mode .preview-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================================================================
+   Markdown Text Area (Editor)
+   =================================================================== */
+.preview-editor {
+  width: 100%;
+  height: 520px;
+  resize: vertical;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  font-size: 13.5px;
+  font-family: 'Fira Code', 'Consolas', 'D2Coding', monospace;
+  line-height: 1.7;
+  color: var(--text-main);
+  outline: none;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.preview-editor:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* Custom Scrollbar for Textarea and HTML Preview */
+.preview-editor::-webkit-scrollbar,
+.preview-rendered::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.preview-editor::-webkit-scrollbar-track,
+.preview-rendered::-webkit-scrollbar-track {
+  background: transparent;
+}
+.preview-editor::-webkit-scrollbar-thumb,
+.preview-rendered::-webkit-scrollbar-thumb {
+  background: hsl(220, 13%, 80%);
+  border-radius: 4px;
+}
+.preview-editor::-webkit-scrollbar-thumb:hover,
+.preview-rendered::-webkit-scrollbar-thumb:hover {
+  background: hsl(220, 13%, 70%);
+}
+
+/* ===================================================================
+   Rendered Markdown CSS (GitHub-like Clean & Crisp Style)
+   =================================================================== */
+.preview-rendered {
+  width: 100%;
+  height: 520px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: hsl(220, 20%, 15%);
+  word-break: break-word;
+  box-shadow: var(--shadow-sm);
+}
+
+/* GFM details inside preview */
+.preview-rendered h1, 
+.preview-rendered h2, 
+.preview-rendered h3, 
+.preview-rendered h4 {
+  margin-top: 28px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-main);
+}
+.preview-rendered h1 { font-size: 1.75em; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.4em; }
+.preview-rendered h2 { font-size: 1.4em; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.4em; }
+.preview-rendered h3 { font-size: 1.2em; }
+.preview-rendered h4 { font-size: 1em; }
+
+.preview-rendered p {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.preview-rendered ul, 
+.preview-rendered ol {
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+.preview-rendered li {
+  margin-top: 0.3em;
+}
+
+.preview-rendered code {
+  padding: 0.2em 0.5em;
+  margin: 0;
+  font-size: 85%;
+  background-color: hsl(220, 13%, 94%);
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.preview-rendered pre {
+  padding: 16px 20px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.5;
+  background-color: hsl(220, 13%, 97%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+}
+.preview-rendered pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 100%;
+  color: var(--text-main);
+  font-weight: 400;
+}
+
+.preview-rendered table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+}
+.preview-rendered table th, 
+.preview-rendered table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+}
+.preview-rendered table th {
+  font-weight: 600;
+  background-color: hsl(220, 13%, 96%);
+  color: var(--text-main);
+}
+.preview-rendered table tr:nth-child(even) {
+  background-color: hsl(220, 15%, 98%);
+}
+
+.preview-rendered blockquote {
+  padding: 4px 16px;
+  color: var(--text-muted);
+  border-left: 4px solid var(--primary);
+  background: var(--primary-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 0 0 18px 0;
+}
+
+.preview-rendered hr {
+  height: 2px;
+  padding: 0;
+  margin: 28px 0;
+  background-color: var(--border-color);
+  border: 0;
+}
+
+.preview-rendered img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 4px;
+  display: block;
+}
+
+/* ===================================================================
+   Animations & Keyframes
+   =================================================================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===================================================================
+   Footer & Misc
+   =================================================================== */
+.footer {
+  text-align: center;
+  padding: 16px 20px;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  border-top: 1px solid var(--border-color);
+  background: rgba(248, 250, 252, 0.4);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .preview-content.split-mode {
+    grid-template-columns: 1fr;
+  }
+  .container.expanded {
+    max-width: 100%;
+  }
+  /* Split 버튼을 모바일 등에서는 비활성화하거나 감춤 */
+  .preview-tabs button[data-tab="split"] {
+    display: none;
+  }
+}
